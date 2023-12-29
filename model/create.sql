@@ -1,3 +1,5 @@
+-- create and use own database!
+
 CREATE SCHEMA IF NOT EXISTS cbdb;
 
 DROP TYPE IF EXISTS cbdb.os;
