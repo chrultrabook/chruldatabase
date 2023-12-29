@@ -1,23 +1,22 @@
-SELECT 'CREATE DATABASE chruldatabase'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'chruldatabase');
+CREATE SCHEMA IF NOT EXISTS cbdb;
 
-DROP TYPE IF EXISTS os;
-CREATE TYPE os AS ENUM ('windows', 'linux', 'macos');
+DROP TYPE IF EXISTS cbdb.os;
+CREATE TYPE cbdb.os AS ENUM ('windows', 'linux', 'macos');
 
-CREATE TABLE IF NOT EXISTS arch (
+CREATE TABLE IF NOT EXISTS cbdb.arch (
     id int NOT NULL UNIQUE,
     short varchar(3),
     name varchar,
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS brand (
+CREATE TABLE IF NOT EXISTS cbdb.brand (
     id int NOT NULL UNIQUE,
     name varchar,
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS device (
+CREATE TABLE IF NOT EXISTS cbdb.device (
     id int NOT NULL UNIQUE,
     name varchar NOT NULL,
     arch_id int,
@@ -25,23 +24,23 @@ CREATE TABLE IF NOT EXISTS device (
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS arch_notes (
+CREATE TABLE IF NOT EXISTS cbdb.arch_notes (
     id int NOT NULL UNIQUE,
-    os os NOT NULL,
+    os cbdb.os NOT NULL,
     arch_id int,
     note varchar,
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS device_notes (
+CREATE TABLE IF NOT EXISTS cbdb.device_notes (
     id int NOT NULL UNIQUE,
-    os os NOT NULL,
+    os cbdb.os NOT NULL,
     device_id int,
     note varchar,
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS win_drivers (
+CREATE TABLE IF NOT EXISTS cbdb.win_drivers (
     id int NOT NULL UNIQUE,
     device_id int,
     arch_id int,
