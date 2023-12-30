@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS cbdb.brand (
     primary key (id)
 );
 
-CREATE TABLE IF NOT EXISTS cbdb.device (
+CREATE TABLE IF NOT EXISTS cbdb.Device (
     id int NOT NULL UNIQUE,
     name varchar NOT NULL,
     arch_id int,
