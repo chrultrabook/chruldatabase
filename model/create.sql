@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS cbdb.Device (
     name varchar NOT NULL,
     arch_id int,
     brand_id int,
+    stock_kernel_partsize int,
     primary key (id)
 );
 

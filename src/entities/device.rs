@@ -6,5 +6,6 @@ struct Device {
   id: u32,
   name: String,
   arch_id: u32,
-  brand_id: u32
+  brand_id: u32,
+  stock_kernel_partsize: u64
 }
