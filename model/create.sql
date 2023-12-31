@@ -2,13 +2,14 @@
 
 CREATE SCHEMA IF NOT EXISTS cbdb;
 
-DROP TYPE IF EXISTS cbdb.os;
+--DROP TYPE IF EXISTS cbdb.os;
 CREATE TYPE cbdb.os AS ENUM ('windows', 'linux', 'macos');
 
 CREATE TABLE IF NOT EXISTS cbdb.arch (
     id int NOT NULL UNIQUE,
     short varchar(3),
     name varchar,
+    stock_kernel_partsize int,
     primary key (id)
 );
 
@@ -23,7 +24,6 @@ CREATE TABLE IF NOT EXISTS cbdb.Device (
     name varchar NOT NULL,
     arch_id int,
     brand_id int,
-    stock_kernel_partsize int,
     primary key (id)
 );
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS cbdb.arch_notes (
     os cbdb.os NOT NULL,
     arch_id int,
     note varchar,
+    show_on_dev_note bool,
     primary key (id)
 );
 
