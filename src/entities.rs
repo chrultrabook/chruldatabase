@@ -2,24 +2,6 @@ use crate::enums::os;
 use diesel::Queryable;
 
 #[derive(Queryable)]
-#[diesel(table_name = arch)]
-pub struct Arch {
-    id: u32,
-    short: String,
-    name: String,
-}
-
-#[derive(Queryable)]
-#[diesel(table_name = arch_notes)]
-pub struct ArchNotes {
-    id: u32,
-    os: os,
-    arch_id: u32,
-    note: String,
-    show_on_dev_note: bool,
-}
-
-#[derive(Queryable)]
 #[diesel(table_name = brand)]
 pub struct Brand {
     id: u32,
@@ -43,6 +25,24 @@ pub struct DeviceNotes {
     os: os,
     device_id: u32,
     note: String,
+}
+
+#[derive(Queryable)]
+#[diesel(table_name = gen)]
+pub struct Gen {
+    id: u32,
+    short: String,
+    name: String,
+}
+
+#[derive(Queryable)]
+#[diesel(table_name = gen_notes)]
+pub struct GenNotes {
+    id: u32,
+    os: os,
+    arch_id: u32,
+    note: String,
+    show_on_dev_note: bool,
 }
 
 #[derive(Queryable)]
