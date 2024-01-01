@@ -1,6 +1,6 @@
-mod reqs;
 pub mod entities;
 pub mod enums;
+mod reqs;
 
 use rocket::{launch, routes};
 
