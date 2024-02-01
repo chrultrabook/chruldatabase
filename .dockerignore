@@ -1,19 +1,5 @@
-# OS
-.DS_Store
-
-# IDE
-.idea/
-.vscode/
-
-# Rust
-target/
-**/*.rs.bk
-*.pdb
-.rustfmt.toml
-
-# Coverage
-/coverage
-build_rs_cov.profraw
-
-# other
-model/
+*
+!target/*-runner
+!target/*-runner.jar
+!target/lib/*
+!target/quarkus-app/*
