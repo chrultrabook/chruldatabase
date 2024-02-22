@@ -16,8 +16,9 @@ pub fn get_device_by_name(name: String) {}
 #[get("/gen/all")]
 pub fn get_gen_all() {}
 
-/// Get Get cpu generation and related notes by shortname
+/// Get cpu generation and related notes by shortname
 #[get("/gen/name/<gen>")]
 pub fn get_gen_by_name(gen: String) {}
 
 //TODO: Notes separate?
+//TODO: Do we need a `get_all()`?
