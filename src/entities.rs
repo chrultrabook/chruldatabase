@@ -13,7 +13,7 @@ pub struct Brand {
 struct Device {
     id: u32,
     name: String,
-    arch_id: u32,
+    generation_id: u32,
     brand_id: u32,
     stock_kernel_partsize: u64,
 }
@@ -28,7 +28,7 @@ pub struct DeviceNotes {
 }
 
 #[derive(Queryable)]
-#[diesel(table_name = gen)]
+#[diesel(table_name = generation)]
 pub struct Gen {
     id: u32,
     short: String,
@@ -36,11 +36,11 @@ pub struct Gen {
 }
 
 #[derive(Queryable)]
-#[diesel(table_name = gen_notes)]
+#[diesel(table_name = generation_notes)]
 pub struct GenNotes {
     id: u32,
     os: os,
-    arch_id: u32,
+    generation_id: u32,
     note: String,
     show_on_dev_note: bool,
 }
@@ -50,7 +50,7 @@ pub struct GenNotes {
 pub struct WinDrivers {
     id: u32,
     device_id: u32,
-    arch_id: u32,
+    generation_id: u32,
     name: String,
     download_link: u32,
 }
