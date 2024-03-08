@@ -2,135 +2,61 @@
 
 CREATE SCHEMA IF NOT EXISTS cbdb;
 
---DROP TYPE IF EXISTS cbdb.os;
+DROP TYPE IF EXISTS cbdb.os;
 CREATE TYPE cbdb.os AS ENUM ('windows', 'linux', 'macos');
 
 CREATE TABLE IF NOT EXISTS cbdb.brand
 (
-    id
-    int
-    NOT
-    NULL
-    UNIQUE,
-    name
-    varchar,
-    primary
-    key
-(
-    id
-)
-    );
+    id INT NOT NULL UNIQUE,
+    name VARCHAR,
+    PRIMARY KEY (id)
+);
 
 CREATE TABLE IF NOT EXISTS cbdb.device
 (
-    id
-    int
-    NOT
-    NULL
-    UNIQUE,
-    name
-    varchar
-    NOT
-    NULL,
-    arch_id
-    int,
-    brand_id
-    int,
-    primary
-    key
-(
-    id
-)
-    );
+    id INT NOT NULL UNIQUE,
+    name VARCHAR NOT NULL,
+    eol_date TIMESTAMP NOT NULL,
+    has_fullrom BOOL,
+    generation_id INT,
+    brand_id INT,
+    PRIMARY KEY (id)
+);
 
 CREATE TABLE IF NOT EXISTS cbdb.device_notes
 (
-    id
-    int
-    NOT
-    NULL
-    UNIQUE,
-    os
-    cbdb
-    .
-    os
-    NOT
-    NULL,
-    device_id
-    int,
-    note
-    varchar,
-    primary
-    key
-(
-    id
-)
-    );
+    id INT NOT NULL UNIQUE,
+    os cbdb.os NOT NULL,
+    device_id INT,
+    note VARCHAR,
+    PRIMARY KEY (id)
+);
 
-CREATE TABLE IF NOT EXISTS cbdb.gen
+CREATE TABLE IF NOT EXISTS cbdb.generation
 (
-    id
-    int
-    NOT
-    NULL
-    UNIQUE,
-    short
-    varchar
-(
-    3
-),
-    name varchar,
-    stock_kernel_partsize int,
-    primary key
-(
-    id
-)
-    );
+    id INT NOT NULL UNIQUE,
+    short VARCHAR(3),
+    name VARCHAR,
+    stock_kernel_partsize INT,
+    PRIMARY KEY (id)
+);
 
-CREATE TABLE IF NOT EXISTS cbdb.gen_notes
+CREATE TABLE IF NOT EXISTS cbdb.generation_notes
 (
-    id
-    int
-    NOT
-    NULL
-    UNIQUE,
-    os
-    cbdb
-    .
-    os
-    NOT
-    NULL,
-    arch_id
-    int,
-    note
-    varchar,
-    show_on_dev_note
-    bool,
-    primary
-    key
-(
-    id
-)
-    );
+    id INT NOT NULL UNIQUE,
+    os cbdb.os NOT NULL,
+    generation_id INT,
+    note VARCHAR,
+    show_on_dev_note BOOL,
+    PRIMARY KEY (id)
+);
 
 CREATE TABLE IF NOT EXISTS cbdb.win_drivers
 (
-    id
-    int
-    NOT
-    NULL
-    UNIQUE,
-    device_id
-    int,
-    arch_id
-    int,
-    name
-    varchar,
-    download_link
-    varchar,
-    primary
-    key
-(
-    id
-)
-    );
+    id INT NOT NULL UNIQUE,
+    device_id INT,
+    generation_id INT,
+    name VARCHAR,
+    download_link VARCHAR,
+    PRIMARY KEY (id)
+);
