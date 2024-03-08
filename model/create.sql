@@ -3,7 +3,7 @@
 CREATE SCHEMA IF NOT EXISTS cbdb;
 
 DROP TYPE IF EXISTS cbdb.os;
-CREATE TYPE cbdb.os AS ENUM ('windows', 'linux', 'macos');
+CREATE TYPE cbdb.os AS ENUM ('WINDOWS', 'LINUX', 'MACOS');
 
 CREATE TABLE IF NOT EXISTS cbdb.brand
 (
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS cbdb.device
 (
     id INT NOT NULL UNIQUE,
     name VARCHAR NOT NULL,
-    eol_date TIMESTAMP NOT NULL,
+    eol_date DATE NOT NULL,
     has_fullrom BOOL,
     generation_id INT,
     brand_id INT,
