@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "generation", schema = "cbdb")
+@Cacheable
 public class Generation extends PanacheEntityBase {
 
     @Id
@@ -17,6 +18,9 @@ public class Generation extends PanacheEntityBase {
 
     @Column(name = "name")
     public String name;
+
+    @Column(name = "baseboard")
+    public String baseboard;
 
     @Column(name = "stock_kernel_partsize")
     public int stockKernelPartsize;

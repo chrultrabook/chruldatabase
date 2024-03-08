@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "device_notes", schema = "cbdb")
+@Cacheable
 public class DeviceNote extends PanacheEntityBase {
 
     @Id
@@ -14,6 +15,7 @@ public class DeviceNote extends PanacheEntityBase {
     public int id;
 
     @Column(name = "os")
+    @Enumerated(EnumType.STRING)
     public OS os;
 
     @Column(name = "device_id")

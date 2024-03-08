@@ -5,7 +5,8 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "generation_notes")
+@Table(name = "generation_notes", schema = "cbdb")
+@Cacheable
 public class GenerationNote extends PanacheEntityBase {
 
     @Id
@@ -14,6 +15,7 @@ public class GenerationNote extends PanacheEntityBase {
     public int id;
 
     @Column(name = "os")
+    @Enumerated(EnumType.STRING)
     public OS os;
 
     @Column(name = "generation_id")

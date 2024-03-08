@@ -7,6 +7,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "device", schema = "cbdb")
+@Cacheable
 public class Device extends PanacheEntityBase {
 
     @Id

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "brand", schema = "cbdb")
+@Cacheable
 public class Brand extends PanacheEntityBase {
 
     @Id

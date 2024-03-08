@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "win_drivers", schema = "cbdb")
+@Cacheable
 public class WinDriver extends PanacheEntityBase {
 
     @Id

@@ -7,14 +7,14 @@ CREATE TYPE cbdb.os AS ENUM ('WINDOWS', 'LINUX', 'MACOS');
 
 CREATE TABLE IF NOT EXISTS cbdb.brand
 (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
     name VARCHAR,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS cbdb.device
 (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
     name VARCHAR NOT NULL,
     eol_date DATE NOT NULL,
     has_fullrom BOOL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS cbdb.device
 
 CREATE TABLE IF NOT EXISTS cbdb.device_notes
 (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
     os cbdb.os NOT NULL,
     device_id INT,
     note VARCHAR,
@@ -34,16 +34,17 @@ CREATE TABLE IF NOT EXISTS cbdb.device_notes
 
 CREATE TABLE IF NOT EXISTS cbdb.generation
 (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
     short VARCHAR(3),
     name VARCHAR,
+    baseboard VARCHAR,
     stock_kernel_partsize INT,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS cbdb.generation_notes
 (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
     os cbdb.os NOT NULL,
     generation_id INT,
     note VARCHAR,
@@ -53,7 +54,7 @@ CREATE TABLE IF NOT EXISTS cbdb.generation_notes
 
 CREATE TABLE IF NOT EXISTS cbdb.win_drivers
 (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
     device_id INT,
     generation_id INT,
     name VARCHAR,
