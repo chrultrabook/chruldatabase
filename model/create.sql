@@ -15,9 +15,10 @@ CREATE TABLE IF NOT EXISTS cbdb.brand
 CREATE TABLE IF NOT EXISTS cbdb.device
 (
     id SERIAL,
-    name VARCHAR NOT NULL,
+    com_name VARCHAR,
+    board_name VARCHAR NOT NULL,
     eol_date DATE NOT NULL,
-    has_fullrom BOOL,
+    has_full_rom BOOL,
     generation_id INT,
     brand_id INT,
     PRIMARY KEY (id)

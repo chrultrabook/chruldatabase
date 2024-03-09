@@ -1,4 +1,4 @@
-package com.chrultrabook.cbdb.entity.enums;
+package com.chrultrabook.cbdb.constants;
 
 public enum OS {
     WINDOWS,

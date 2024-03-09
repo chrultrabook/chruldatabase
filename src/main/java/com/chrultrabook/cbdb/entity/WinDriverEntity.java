@@ -4,9 +4,10 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 @Entity
+@EntityListeners(ReadOnlyEntity.class)
 @Table(name = "win_drivers", schema = "cbdb")
 @Cacheable
-public class WinDriver extends PanacheEntityBase {
+public class WinDriverEntity extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

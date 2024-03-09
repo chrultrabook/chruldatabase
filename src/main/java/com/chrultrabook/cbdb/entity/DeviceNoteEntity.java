@@ -1,13 +1,15 @@
 package com.chrultrabook.cbdb.entity;
 
-import com.chrultrabook.cbdb.entity.enums.OS;
+import com.chrultrabook.cbdb.constants.OS;
+import com.chrultrabook.cbdb.rest.bean.DeviceNote;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 @Entity
+@EntityListeners(ReadOnlyEntity.class)
 @Table(name = "device_notes", schema = "cbdb")
 @Cacheable
-public class DeviceNote extends PanacheEntityBase {
+public class DeviceNoteEntity extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +25,14 @@ public class DeviceNote extends PanacheEntityBase {
 
     @Column(name = "note")
     public String note;
+
+    @Transient
+    public DeviceNote toRecord() {
+        return new DeviceNote(
+                this.id,
+                this.os,
+                this.note
+        );
+    }
 
 }

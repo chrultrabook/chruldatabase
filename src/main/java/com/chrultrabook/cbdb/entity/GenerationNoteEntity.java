@@ -1,13 +1,15 @@
 package com.chrultrabook.cbdb.entity;
 
-import com.chrultrabook.cbdb.entity.enums.OS;
+import com.chrultrabook.cbdb.constants.OS;
+import com.chrultrabook.cbdb.rest.bean.GenerationNote;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 @Entity
+@EntityListeners(ReadOnlyEntity.class)
 @Table(name = "generation_notes", schema = "cbdb")
 @Cacheable
-public class GenerationNote extends PanacheEntityBase {
+public class GenerationNoteEntity extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +29,13 @@ public class GenerationNote extends PanacheEntityBase {
     @Column(name = "show_on_dev_note")
     public boolean showIfDevNoteExists;
 
+    @Transient
+    public GenerationNote toRecord() {
+        return new GenerationNote(
+                this.id,
+                this.os,
+                this.note,
+                this.showIfDevNoteExists
+        );
+    }
 }
