@@ -28,8 +28,6 @@ public class GenerationEntity extends PanacheEntityBase {
     @Column(name = "baseboard")
     public String baseboard;
 
-    @Column(name = "stock_kernel_part_size")
-    public int stockKernelPartSize;
 
     public Generation toRecord(List<Device> devices, List<GenerationNote> notes) {
         return new Generation(
@@ -37,7 +35,6 @@ public class GenerationEntity extends PanacheEntityBase {
                 this.shortName,
                 this.name,
                 this.baseboard,
-                this.stockKernelPartSize,
                 notes,
                 devices
         );

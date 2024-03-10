@@ -9,6 +9,8 @@ public record Device(
         String boardName,
         Date eolDate,
         boolean hasFullRom,
+        String wpMethod,
+        int stockKernelPartSize,
         String brand,
         List<DeviceNote> notes
 ) {

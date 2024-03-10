@@ -7,7 +7,6 @@ public record Generation(
         String shortName,
         String name,
         String baseboard,
-        int stockKernelPartSize,
         List<GenerationNote> notes,
         List<Device> devices
 ) {

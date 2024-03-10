@@ -34,6 +34,12 @@ public class DeviceEntity extends PanacheEntityBase {
     @Column(name = "has_full_rom", columnDefinition = "BOOL")
     public boolean hasFullRom;
 
+    @Column(name = "wp_method")
+    public String wpMethod;
+
+    @Column(name = "stock_kernel_part_size")
+    public int stockKernelPartSize;
+
     @Column(name = "generation_id")
     public int generationId;
 
@@ -53,6 +59,8 @@ public class DeviceEntity extends PanacheEntityBase {
                 this.boardName,
                 this.eolDate,
                 this.hasFullRom,
+                this.wpMethod,
+                this.stockKernelPartSize,
                 brandName,
                 notes
         );
