@@ -1,57 +1,57 @@
 CREATE TABLE IF NOT EXISTS brand
 (
-    id   SERIAL,
-    name VARCHAR,
+    id   INTEGER NOT NULL UNIQUE,
+    name TEXT,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS device
 (
-    id            SERIAL,
-    com_name      VARCHAR,
-    board_name    VARCHAR NOT NULL,
-    eol_date      DATE    NOT NULL,
-    has_full_rom  BOOL,
-    generation_id INT,
-    brand_id      INT,
+    id            INTEGER NOT NULL UNIQUE,
+    com_name      TEXT,
+    board_name    TEXT NOT NULL,
+    eol_date      DATE NOT NULL,
+    has_full_rom  BOOLEAN,
+    generation_id INTEGER,
+    brand_id      INTEGER,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS device_notes
 (
-    id        SERIAL,
+    id        INTEGER NOT NULL UNIQUE,
     os        TEXT CHECK ( os IN ('WINDOWS', 'LINUX', 'MACOS', 'ALL') ) NOT NULL DEFAULT 'ALL',
-    device_id INT,
-    note      VARCHAR,
+    device_id INTEGER,
+    note      TEXT,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS generation
 (
-    id                    SERIAL,
-    short                 VARCHAR(3),
-    name                  VARCHAR,
-    baseboard             VARCHAR,
-    stock_kernel_partsize INT,
+    id                     INTEGER NOT NULL UNIQUE,
+    short                  TEXT(3),
+    name                   TEXT,
+    baseboard              TEXT,
+    stock_kernel_part_size INTEGER,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS generation_notes
 (
-    id               SERIAL,
+    id               INTEGER NOT NULL UNIQUE,
     os               TEXT CHECK ( os IN ('WINDOWS', 'LINUX', 'MACOS', 'ALL') ) NOT NULL DEFAULT 'ALL',
-    generation_id    INT,
-    note             VARCHAR,
-    show_on_dev_note BOOL,
+    generation_id    INTEGER,
+    note             TEXT,
+    show_on_dev_note BOOLEAN,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS win_drivers
+/*CREATE TABLE IF NOT EXISTS win_drivers
 (
-    id            SERIAL,
-    device_id     INT,
-    generation_id INT,
-    name          VARCHAR,
-    download_link VARCHAR,
+    id            INTEGER NOT NULL UNIQUE,
+    device_id     INTEGER,
+    generation_id INTEGER,
+    name          TEXT,
+    download_link TEXT,
     PRIMARY KEY (id)
-);
+); */

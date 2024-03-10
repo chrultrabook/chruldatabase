@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 
 @Entity
 @EntityListeners(ReadOnlyEntity.class)
-@Table(name = "device_notes", schema = "cbdb")
+@Table(name = "device_notes")
 @Cacheable
 public class DeviceNoteEntity extends PanacheEntityBase {
 

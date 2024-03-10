@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 
 @Entity
 @EntityListeners(ReadOnlyEntity.class)
-@Table(name = "generation_notes", schema = "cbdb")
+@Table(name = "generation_notes")
 @Cacheable
 public class GenerationNoteEntity extends PanacheEntityBase {
 
@@ -26,7 +26,7 @@ public class GenerationNoteEntity extends PanacheEntityBase {
     @Column(name = "note")
     public String note;
 
-    @Column(name = "show_on_dev_note")
+    @Column(name = "show_on_dev_note", columnDefinition = "BOOL")
     public boolean showIfDevNoteExists;
 
     @Transient

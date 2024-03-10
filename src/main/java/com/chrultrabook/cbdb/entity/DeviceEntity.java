@@ -7,13 +7,12 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Entity
 @EntityListeners(ReadOnlyEntity.class)
-@Table(name = "device", schema = "cbdb")
+@Table(name = "device")
 @Cacheable
 public class DeviceEntity extends PanacheEntityBase {
 
@@ -32,7 +31,7 @@ public class DeviceEntity extends PanacheEntityBase {
     @Column(name = "eol_date")
     public Date eolDate;
 
-    @Column(name = "has_full_rom")
+    @Column(name = "has_full_rom", columnDefinition = "BOOL")
     public boolean hasFullRom;
 
     @Column(name = "generation_id")
