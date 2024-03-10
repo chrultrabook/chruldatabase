@@ -1,64 +1,57 @@
--- create and use own database!
-
-CREATE SCHEMA IF NOT EXISTS cbdb;
-
-DROP TYPE IF EXISTS cbdb.os;
-CREATE TYPE cbdb.os AS ENUM ('WINDOWS', 'LINUX', 'MACOS');
-
-CREATE TABLE IF NOT EXISTS cbdb.brand
+CREATE TABLE IF NOT EXISTS brand
 (
-    id SERIAL,
+    id   SERIAL,
     name VARCHAR,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS cbdb.device
+CREATE TABLE IF NOT EXISTS device
 (
-    id SERIAL,
-    com_name VARCHAR,
-    board_name VARCHAR NOT NULL,
-    eol_date DATE NOT NULL,
-    has_full_rom BOOL,
+    id            SERIAL,
+    com_name      VARCHAR,
+    board_name    VARCHAR NOT NULL,
+    eol_date      DATE    NOT NULL,
+    has_full_rom  BOOL,
     generation_id INT,
-    brand_id INT,
+    brand_id      INT,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS cbdb.device_notes
+CREATE TABLE IF NOT EXISTS device_notes
 (
-    id SERIAL,
-    os cbdb.os NOT NULL,
+    id        SERIAL,
+    os        TEXT CHECK ( os IN ('WINDOWS', 'LINUX', 'MACOS', 'ALL') ) NOT NULL DEFAULT 'ALL',
     device_id INT,
-    note VARCHAR,
+    note      VARCHAR,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS cbdb.generation
+CREATE TABLE IF NOT EXISTS generation
 (
-    id SERIAL,
-    short VARCHAR(3),
-    name VARCHAR,
-    baseboard VARCHAR,
+    id                    SERIAL,
+    short                 VARCHAR(3),
+    name                  VARCHAR,
+    baseboard             VARCHAR,
     stock_kernel_partsize INT,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS cbdb.generation_notes
+CREATE TABLE IF NOT EXISTS generation_notes
 (
-    id SERIAL,
-    os cbdb.os NOT NULL,
-    generation_id INT,
-    note VARCHAR,
+    id               SERIAL,
+    os               TEXT CHECK ( os IN ('WINDOWS', 'LINUX', 'MACOS', 'ALL') ) NOT NULL DEFAULT 'ALL',
+    generation_id    INT,
+    note             VARCHAR,
     show_on_dev_note BOOL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS cbdb.win_drivers
+CREATE TABLE IF NOT EXISTS win_drivers
 (
-    id SERIAL,
-    device_id INT,
+    id            SERIAL,
+    device_id     INT,
     generation_id INT,
-    name VARCHAR,
+    name          VARCHAR,
     download_link VARCHAR,
     PRIMARY KEY (id)
 );
