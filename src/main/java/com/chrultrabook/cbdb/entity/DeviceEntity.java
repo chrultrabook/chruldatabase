@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Entity
-@EntityListeners(ReadOnlyEntity.class)
+@EntityListeners(ReadOnly.class)
 @Table(name = "device")
 @Cacheable
 public class DeviceEntity extends PanacheEntityBase {
@@ -40,19 +40,14 @@ public class DeviceEntity extends PanacheEntityBase {
     @Column(name = "stock_kernel_part_size")
     public int stockKernelPartSize;
 
-    @Column(name = "generation_id")
-    public int generationId;
+    @ManyToOne
+    public BrandEntity brand;
 
-    @Column(name = "brand_id")
-    public int brandId;
+    @OneToMany
+    public List<DeviceNoteEntity> notes;
 
     @Transient
-    public Device toRecord(List<DeviceNote> notes) {
-        Optional<BrandEntity> brand = BrandEntity.findByIdOptional(brandId);
-        String brandName = "";
-        if (brand.isPresent()) {
-            brandName = brand.get().name;
-        }
+    public Device toRecord() {
         return new Device(
                 this.id,
                 this.comName,
@@ -61,8 +56,8 @@ public class DeviceEntity extends PanacheEntityBase {
                 this.hasFullRom,
                 this.wpMethod,
                 this.stockKernelPartSize,
-                brandName,
-                notes
+                this.brand.name,
+                this.notes.stream().map(DeviceNoteEntity::toRecord).toList()
         );
     }
 

@@ -2,12 +2,12 @@ package com.chrultrabook.cbdb.rest.bean;
 
 import java.util.List;
 
-public record Generation(
+public record DeviceGeneration(
         int id,
         String shortName,
         String name,
         String baseboard,
-        List<GenerationNote> notes,
+        List<DeviceGenerationNote> notes,
         List<Device> devices
 ) {
 }

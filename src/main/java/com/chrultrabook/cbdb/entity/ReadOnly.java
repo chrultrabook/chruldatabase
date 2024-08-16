@@ -4,7 +4,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreRemove;
 import jakarta.persistence.PreUpdate;
 
-public class ReadOnlyEntity {
+public class ReadOnly {
 
     @PrePersist
     void onPrePersist(Object o) {

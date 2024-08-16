@@ -6,8 +6,8 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 @Entity
-@EntityListeners(ReadOnlyEntity.class)
-@Table(name = "device_notes")
+@EntityListeners(ReadOnly.class)
+@Table(name = "device_note")
 @Cacheable
 public class DeviceNoteEntity extends PanacheEntityBase {
 

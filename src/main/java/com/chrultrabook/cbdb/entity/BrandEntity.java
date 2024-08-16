@@ -4,7 +4,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 @Entity
-@EntityListeners(ReadOnlyEntity.class)
+@EntityListeners(ReadOnly.class)
 @Table(name = "brand")
 @Cacheable
 public class BrandEntity extends PanacheEntityBase {
