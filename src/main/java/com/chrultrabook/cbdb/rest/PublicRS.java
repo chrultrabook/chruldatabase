@@ -13,8 +13,8 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
 
-@Path("v1")
-public class RS {
+@Path("/v1/public")
+public class PublicRS {
 
     @Inject
     EntityMapper em;
