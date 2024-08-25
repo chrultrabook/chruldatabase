@@ -1,17 +1,17 @@
 package com.chrultrabook.cbdb.rest;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.chrultrabook.cbdb.entity.DeviceEntity;
 import com.chrultrabook.cbdb.entity.DeviceGenerationEntity;
 import com.chrultrabook.cbdb.rest.bean.DeviceGeneration;
-import jakarta.inject.Inject;
+
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
-
-import java.util.List;
-import java.util.Optional;
 
 @Path("/v1/public")
 public class PublicRS {
