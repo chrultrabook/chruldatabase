@@ -37,6 +37,9 @@ public class DeviceEntity extends PanacheEntityBase {
     @Column(name = "wp_method")
     public String wpMethod;
 
+    @Column(name = "wp_method_type")
+    public String wpMethodType;
+
     @Column(name = "stock_kernel_part_size")
     public int stockKernelPartSize;
 
